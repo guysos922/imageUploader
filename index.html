@@ -17,12 +17,15 @@
             <h1 class="text-flicker-in-glow">BtUploader</h1>
         </div>
         <div class="upload-rect">
-            <div class="drop-image-rect">
+            <div class="drop-image-rect" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event)">
                 <img src="resources/camera.png" alt="camera">
                 <div class="drop-image-text"> Drop image here</div>
             </div>
             <div class="upload-rect-text"> OR </div>
-            <button class="browse-button">Browse</button>
+            <div class="browse-button-rect">
+                <button class="browse-button">Browse</button>
+                <input type="file" id="myfile" name="myfile" class="file-input" multiple>
+            </div>
         </div>
         <script src="main.js" async defer></script>
         <footer><p>Made by Guy,Yaniv,Sean,Ron</p></footer>
