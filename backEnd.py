@@ -11,10 +11,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///images.db'
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-'''
+
 def static_dir(path):
     return send_from_directory("static", path)
-
+'''
 
 @app.route('/')
 def servP():
