@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="header">
-            <h1 class="text-flicker-in-glow">Bt<div class="jump">Up</div>loader</h1>
+            <h1 class="text-flicker-in-glow">Bt<div class="jump">Up</div><div class="load">loader</div></h1>
         </div>
         <div class="upload-rect">
             <div class="drop-image-rect" ondrop="dropHandler(event);" ondragover="return false;" ondragenter="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);">
@@ -23,8 +23,8 @@
             </div>
             <div class="upload-rect-text"> OR </div>
             <div class="browse-button-rect">
-                <button class="browse-button">Browse</button>
-                <input type="file" id="myfile" name="myfile" class="file-input" multiple>
+                <button class="browse-button" >Browse</button>
+                <input type="file" id="myfile" name="myfile" class="file-input" onchange="dropHandler(event)" multiple>
             </div>
         </div>
         <script src="main.js" async defer></script>
