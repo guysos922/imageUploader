@@ -1,3 +1,29 @@
+function browseHandler(ev){
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+    document.getElementsByClassName('upload-rect')[0].style.animation = 'slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both';
+    document.getElementsByClassName('upload-rect')[0].style["-webkit-animation"] = 'slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both';
+    //document.getElementsByClassName('load')[0].style.animation = 'drop-load 2s ease-in-out forwards';
+    //document.getElementsByClassName('load')[0].style["-webkit-animation"] = 'drop-load 2s ease-in-out forwards';
+    typeWriter(false)
+    setTimeout(typeWriter, 5000, true);
+    document.getElementsByClassName('loader')[0].style.display = 'block';
+    document.getElementsByClassName('loader')[0].style.animation = 'bounce-in-bottom 1.1s both 1s';
+    document.getElementsByClassName('loader')[0].style["-webkit-animation"] = 'bounce-in-bottom 1.1s both 1s';
+
+    let req = new XMLHttpRequest();
+    let formData = new FormData();
+
+    if (document.getElementById('myFile').files[0]) {
+        console.log("caught file")
+        // If dropped items aren't files, reject them
+        const photo = document.getElementById('myFile').files[0];
+        console.log('... file[' + i + '].name = ' + photo.name);
+        formData.append("photo", photo);
+        req.open("POST", '');
+        req.send(formData);
+    } 
+}
 
 function dropHandler(ev) {
     // Prevent default behavior (Prevent file from being opened)
