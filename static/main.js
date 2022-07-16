@@ -1,6 +1,5 @@
-function dropHandler(ev) {
-    console.log('File(s) dropped');
 
+function dropHandler(ev) {
     // Prevent default behavior (Prevent file from being opened)
     ev.preventDefault();
     document.getElementsByClassName('upload-rect')[0].style.animation = 'slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both';
@@ -13,15 +12,17 @@ function dropHandler(ev) {
     document.getElementsByClassName('loader')[0].style.animation = 'bounce-in-bottom 1.1s both 1s';
     document.getElementsByClassName('loader')[0].style["-webkit-animation"] = 'bounce-in-bottom 1.1s both 1s';
 
+    let req = new XMLHttpRequest();
     let formData = new FormData();
 
     if (ev.dataTransfer.items) {
+        console.log("caught file")
         // Use DataTransferItemList interface to access the file(s)
         for (let i = 0; i < ev.dataTransfer.items.length; i++) {
             // If dropped items aren't files, reject them
             if (ev.dataTransfer.items[i].kind === 'file') {
                 const photo = ev.dataTransfer.items[i].getAsFile();
-                console.log('... file[' + i + '].name = ' + file.name);
+                console.log('... file[' + i + '].name = ' + photo.name);
                 formData.append("photo", photo);
                 req.open("POST", '');
                 req.send(formData);
