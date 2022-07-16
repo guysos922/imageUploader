@@ -4,30 +4,43 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="header">
-            <h1 class="text-flicker-in-glow">Bt<div class="jump">Up</div><div class="load">loader</div></h1>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="text-flicker-in-glow">Bt<div class="jump">Up</div>
+            <div class="load">loader</div>
+        </h1>
+    </div>
+    <div class="upload-rect">
+        <div class="drop-image-rect" ondrop="dropHandler(event);" ondragover="return false;"
+            ondragenter="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);">
+            <img src="resources/camera.png" alt="camera">
+            <div class="drop-image-text"> Drop image here</div>
         </div>
-        <div class="upload-rect">
-            <div class="drop-image-rect" ondrop="dropHandler(event);" ondragover="return false;" ondragenter="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);">
-                <img src="resources/camera.png" alt="camera">
-                <div class="drop-image-text"> Drop image here</div>
-            </div>
-            <div class="upload-rect-text"> OR </div>
-            <div class="browse-button-rect">
-                <button class="browse-button" >Browse</button>
-                <input type="file" id="myfile" name="myfile" class="file-input" onchange="dropHandler(event)" multiple>
-            </div>
+        <div class="upload-rect-text"> OR </div>
+        <div class="browse-button-rect">
+            <button class="browse-button">Browse</button>
+            <input type="file" id="myfile" name="myfile" class="file-input" onchange="dropHandler(event)" multiple>
         </div>
-        <script src="main.js" async defer></script>
-        <footer><p>Made by Guy,Yaniv,Sean,Ron</p></footer>
-    </body>
+    </div>
+    <div class="loader-rect">
+        <div class="loader">
+            <div class="green-line"></div>
+        </div>
+    </div>
+    <script src="main.js" async defer></script>
+    <footer>
+        <p>Made by Guy,Yaniv,Sean,Ron</p>
+    </footer>
+</body>
+
 </html>

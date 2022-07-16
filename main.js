@@ -9,7 +9,10 @@ function dropHandler(ev) {
     //document.getElementsByClassName('load')[0].style["-webkit-animation"] = 'drop-load 2s ease-in-out forwards';
     typeWriter(false)
     setTimeout(typeWriter, 5000, true);
-    
+    document.getElementsByClassName('loader')[0].style.display = 'block';
+    document.getElementsByClassName('loader')[0].style.animation = 'bounce-in-bottom 1.1s both 1s';
+    document.getElementsByClassName('loader')[0].style["-webkit-animation"] = 'bounce-in-bottom 1.1s both 1s';
+
     if (ev.dataTransfer.items) {
       // Use DataTransferItemList interface to access the file(s)
       for (let i = 0; i < ev.dataTransfer.items.length; i++) {
