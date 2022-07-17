@@ -174,12 +174,12 @@ body {
         background-color: white;
         padding: 5px;
 
-        box-shadow: 10px 10px 30px black;
+        box-shadow: 0px 4px 100px #F5F5F5;
 }
 
 .green-line{
         height: 100%;
-        width: 30%;
+        width: 0%;
         border-radius: 30px;
         background-color: rgb(106, 255, 106);
 }

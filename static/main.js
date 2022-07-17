@@ -1,4 +1,4 @@
-function browseHandler(ev){
+async function browseHandler(ev) {
     // Prevent default behavior (Prevent file from being opened)
     ev.preventDefault();
     document.getElementsByClassName('upload-rect')[0].style.animation = 'slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both';
@@ -11,18 +11,27 @@ function browseHandler(ev){
     document.getElementsByClassName('loader')[0].style.animation = 'bounce-in-bottom 1.1s both 1s';
     document.getElementsByClassName('loader')[0].style["-webkit-animation"] = 'bounce-in-bottom 1.1s both 1s';
 
-    let req = new XMLHttpRequest();
+
     let formData = new FormData();
 
-    if (document.getElementById('myFile').files[0]) {
+    if (document.getElementById('myfile').files[0]) {
         console.log("caught file")
         // If dropped items aren't files, reject them
-        const photo = document.getElementById('myFile').files[0];
-        console.log('... file[' + i + '].name = ' + photo.name);
+        const photo = document.getElementById('myfile').files[0];
+        console.log('file name = ' + photo.name);
         formData.append("photo", photo);
-        req.open("POST", '');
-        req.send(formData);
-    } 
+
+        let response = await fetch('/upload-image', {
+            method: 'POST',
+            body: formData
+          });
+
+        console.log(response);
+    }
+
+    for (let i = 1; i < 101; i++) {
+        document.getElementsByClassName('green-line')[0].style.width = i+"%";
+    }
 }
 
 function dropHandler(ev) {
@@ -50,14 +59,12 @@ function dropHandler(ev) {
                 const photo = ev.dataTransfer.items[i].getAsFile();
                 console.log('... file[' + i + '].name = ' + photo.name);
                 formData.append("photo", photo);
-                req.open("POST", '');
+                req.open("POST", '/upload-image');
                 req.send(formData);
             }
         }
-    } else {
-        // Use DataTransfer interface to access the file(s)
-        for (let i = 0; i < ev.dataTransfer.files.length; i++) {
-            console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+        for (let i = 1; i < 101; i++) {
+            document.getElementsByClassName('green-line')[0].style.width = i;
         }
     }
 }
@@ -97,10 +104,3 @@ function typeWriterAdd(char) {
 
 ///////////////////////////////////////////////////////
 
-/*
-let photo = document.getElementById("image-file").files[0];
-let formData = new FormData();
-     
-formData.append("photo", photo);
-fetch('/upload/image', {method: "POST", body: formData});
-*/
