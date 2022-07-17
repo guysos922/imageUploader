@@ -24,13 +24,21 @@ async function browseHandler(ev) {
         let response = await fetch('/upload-image', {
             method: 'POST',
             body: formData
-          });
+        });
 
         console.log(response);
     }
 
-    for (let i = 1; i < 101; i++) {
-        document.getElementsByClassName('green-line')[0].style.width = i+"%";
+    var greenBar = document.getElementsByClassName('green-line')[0];
+    var width = 1;
+    var id = setInterval(scene, 100);
+    function scene() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++;
+            greenBar.style.width = width + '%';
+        }
     }
 }
 
@@ -63,8 +71,17 @@ function dropHandler(ev) {
                 req.send(formData);
             }
         }
-        for (let i = 1; i < 101; i++) {
-            document.getElementsByClassName('green-line')[0].style.width = i;
+
+        var greenBar = document.getElementsByClassName('green-line')[0];
+        var width = 1;
+        var id = setInterval(scene, 100);
+        function scene() {
+            if (width >= 100) {
+                clearInterval(id);
+            } else {
+                width++;
+                greenBar.style.width = width + '%';
+            }
         }
     }
 }
