@@ -25,6 +25,9 @@ def static_dir(path):
     return send_from_directory("static", path)
 '''
 
+def check_name():
+    return len(os.listdir(UPLOAD_FOLDER)) + 1
+
 # Route to upload image
 @app.route('/upload-image', methods=['GET', 'POST'])
 def upload_file():
@@ -32,8 +35,10 @@ def upload_file():
         file = request.files['photo']
         #file.save(file.filename)
         path = app.config['UPLOAD_FOLDER'] 
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
-        return file.filename
+        print("file.filename")
+        file_name_to_be = str(check_name())
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_name_to_be + "." + file.filename.split(".")[1]))
+        return file_name_to_be + "." + file.filename.split(".")[1]
     return 'no file'
 
 

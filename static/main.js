@@ -8,7 +8,6 @@ async function browseHandler(ev) {
         //sends the file to the server
         if (sendFile(file)) {
             console.log("file", file.name, "was sent");
-            changeResult(file.name);
         }
         else {
             console.log("file", file.name, "was not sent");
@@ -34,7 +33,6 @@ function dropHandler(ev) {
         //sends the file to the server
         if (sendFile(file)) {
             console.log("file", file.name, "was sent");
-            changeResult(file.name)
         }
         else {
             console.log("file", file.name, "was not sent");
@@ -49,6 +47,8 @@ function dropHandler(ev) {
 
 function changeResult(fileName){
     document.getElementById("uploaded-img").src = fileName;
+    console.log(window.location.href +'/'+fileName);
+    document.getElementsByClassName('copy-link-button')[0].onclick = function() { location.href =window.location.href +'/'+fileName;}
 }
 /*
 function: loading animation
@@ -127,7 +127,9 @@ async function sendFile(file) {
             method: 'POST',
             body: formData
         });
-
+        let data = await response.text();
+        console.log(data)
+        changeResult(data)
         //if file sent to the function is successful
         return true;
     }
