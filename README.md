@@ -19,7 +19,7 @@
 
 ## Overview
 
-![](upload_images_gif.gif)
+![upload_images_gif](https://github.com/guysos922/imageUploader/blob/main/image-upload-gif.gif)
 
 ### Built With
 
